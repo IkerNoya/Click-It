@@ -6,7 +6,9 @@ public class GameManager : MonoBehaviour
 {
     private static GameManager instance;
     public int score;
-    int initialValue = 50;
+    public int initialValue = 50;
+    public int addedValue = 50;
+
     public static GameManager Get()
     {
         return instance;
@@ -27,7 +29,7 @@ public class GameManager : MonoBehaviour
     }
     void Score()
     {
-        score += 50;
+        score += addedValue;
     }
     private void OnDisable()
     {
