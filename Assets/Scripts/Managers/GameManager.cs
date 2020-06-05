@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Manager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
-    private static Manager instance;
-    public static Manager Get()
+    private static GameManager instance;
+    public static GameManager Get()
     {
         return instance;
     }
