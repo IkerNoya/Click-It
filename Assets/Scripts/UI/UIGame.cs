@@ -16,6 +16,7 @@ public class UIGame : MonoBehaviour
     int InitialScoreC = 2000;
     int InitialScoreD = 2000;
 
+    public static bool inGame = true;
     public delegate void AddScore();
     public static event AddScore addScore;
 
@@ -42,24 +43,30 @@ public class UIGame : MonoBehaviour
     }
     public void OnClickUpgradeA()
     {
-        if (manager.score >= InitialScoreA)
+        if (inGame)
         {
-            manager.score -= InitialScoreA;
-            manager.addedValue += manager.initialValue;
-            InitialScoreA += Percentage(InitialScoreA, percentageA);
-            percentageA += 5;
+            if (manager.score >= InitialScoreA)
+            {
+                manager.score -= InitialScoreA;
+                manager.addedValue += manager.initialValue;
+                InitialScoreA += Percentage(InitialScoreA, percentageA);
+                percentageA += 5;
+            }
         }
     }
     public void OnClickUpgradeB()
     {
-        if(manager.score >= InitialScoreB && Upgrades.minusTimer < 0.5f)
+        if (inGame)
         {
-            Upgrades.ClickNow = true;
-            Upgrades.minusTimer += 0.1f;                    // Para testear, modificar mas adelante para evitar el sobreuso de static
-            Upgrades.timerLimit -= Upgrades.minusTimer; 
-            manager.score -= InitialScoreB;
-            manager.AutomaticAddedValue += manager.initialValue;
-            InitialScoreB += Percentage(InitialScoreB, percentageB);
+            if (manager.score >= InitialScoreB && Upgrades.minusTimer < 0.5f)
+            {
+                Upgrades.ClickNow = true;
+                Upgrades.minusTimer += 0.1f;                    // Para testear, modificar mas adelante para evitar el sobreuso de static
+                Upgrades.timerLimit -= Upgrades.minusTimer;
+                manager.score -= InitialScoreB;
+                manager.AutomaticAddedValue += manager.initialValue;
+                InitialScoreB += Percentage(InitialScoreB, percentageB);
+            }
         }
     }
 
@@ -74,6 +81,7 @@ public class UIGame : MonoBehaviour
     public void OnClickPause()
     {
         Time.timeScale = 0;
+        inGame = false;
         SceneManager.LoadScene("Pause", LoadSceneMode.Additive);
     }
 }

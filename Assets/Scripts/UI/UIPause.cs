@@ -10,6 +10,8 @@ public class UIPause : MonoBehaviour
 {
     public void OnClickContinue()
     {
+        Time.timeScale = 1;
+        UIGame.inGame = true;
         SceneManager.UnloadSceneAsync("Pause");
     }
     public void OnClickSave()
@@ -19,6 +21,7 @@ public class UIPause : MonoBehaviour
     public void OnClickMenu()
     {
         SceneManager.LoadScene("Menu");
+        SceneManager.UnloadSceneAsync("Pause");
     }
     public void OnClickQuit()
     {
