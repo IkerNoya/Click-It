@@ -557,6 +557,10 @@ MonoBehaviour:
   ScoreText: {fileID: 879636621}
   UpgradeAPrice: {fileID: 1312153152}
   UpgradeBPrice: {fileID: 1427716338}
+  InitialScoreA: 2000
+  InitialScoreB: 4000
+  InitialScoreC: 0
+  InitialScoreD: 0
 --- !u!4 &541251891
 Transform:
   m_ObjectHideFlags: 0

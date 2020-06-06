@@ -9,14 +9,14 @@ public class UIGame : MonoBehaviour
     public Text UpgradeAPrice;
     public Text UpgradeBPrice;
     GameManager manager;
-    int InitialScoreA = 2000;
+    public int InitialScoreA = 2000;
     int percentageA = 20;
-    int InitialScoreB = 4000;
+    public int InitialScoreB = 4000;
     int percentageB = 75;
-    int InitialScoreC = 2000;
-    int InitialScoreD = 2000;
+    public int InitialScoreC = 2000;
+    public int InitialScoreD = 2000;
 
-    public static bool inGame = true;
+    public static bool inGame = false;
     public delegate void AddScore();
     public static event AddScore addScore;
 

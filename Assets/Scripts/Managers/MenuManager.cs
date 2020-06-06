@@ -7,6 +7,7 @@ public class MenuManager : MonoBehaviour
 {
     public void ClickToGame()
     {
+        UIGame.inGame = true;
         SceneManager.LoadScene("Game");
     }
     public void ClickToCredits()
