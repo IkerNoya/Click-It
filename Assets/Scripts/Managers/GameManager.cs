@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public int score;
     public int initialValue = 50;
     public int addedValue = 50;
+    public int AutomaticAddedValue = 50;
 
     public static GameManager Get()
     {
@@ -25,14 +26,21 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        Player.addScore += Score;
+        UIGame.addScore += Score;
+        Upgrades.addScore += AutomaticScore;
     }
     void Score()
     {
         score += addedValue;
     }
+    void AutomaticScore()
+    {
+        score += AutomaticAddedValue;
+    }
     private void OnDisable()
     {
-        Player.addScore -= Score;
+        UIGame.addScore -= Score;
+        Upgrades.addScore -= AutomaticScore;
+
     }
 }

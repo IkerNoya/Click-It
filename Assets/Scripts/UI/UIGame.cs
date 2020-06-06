@@ -5,14 +5,19 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class UIGame : MonoBehaviour
 {
-    public Text Score;
+    public Text ScoreText;
     public Text UpgradeAPrice;
+    public Text UpgradeBPrice;
     GameManager manager;
     int InitialScoreA = 2000;
     int percentageA = 20;
-    int InitialScoreB = 2000;
+    int InitialScoreB = 4000;
+    int percentageB = 75;
     int InitialScoreC = 2000;
     int InitialScoreD = 2000;
+
+    public delegate void AddScore();
+    public static event AddScore addScore;
 
     private void Start()
     {
@@ -20,8 +25,16 @@ public class UIGame : MonoBehaviour
     }
     private void Update()
     {
-        Score.text = "Score: " + manager.score;
+        ScoreText.text = "Score: " + manager.score;
         UpgradeAPrice.text = "Price " + InitialScoreA;
+        if(Upgrades.minusTimer<0.5f)
+            UpgradeBPrice.text = "Price " + InitialScoreB;
+        else if(Upgrades.minusTimer >= 0.5f)
+            UpgradeBPrice.text = " Maxed";
+    }
+    public void OnClickObjective()
+    {
+        addScore();
     }
     int Percentage(int value, int percentage)
     {
@@ -39,8 +52,17 @@ public class UIGame : MonoBehaviour
     }
     public void OnClickUpgradeB()
     {
-
+        if(manager.score >= InitialScoreB && Upgrades.minusTimer < 0.5f)
+        {
+            Upgrades.ClickNow = true;
+            Upgrades.minusTimer += 0.1f;                    // Para testear, modificar mas adelante para evitar el sobreuso de static
+            Upgrades.timerLimit -= Upgrades.minusTimer; 
+            manager.score -= InitialScoreB;
+            manager.AutomaticAddedValue += manager.initialValue;
+            InitialScoreB += Percentage(InitialScoreB, percentageB);
+        }
     }
+
     public void OnClickUpgradeC()
     {
 
