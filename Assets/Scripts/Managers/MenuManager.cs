@@ -48,6 +48,23 @@ public class MenuManager : MonoBehaviour
         }
         isLoaded = true;
     }
+
+    public void ClickToDeleteSaves()
+    {
+        manager.ResetValues();
+        FileStream fs = File.OpenWrite("Assets/SavedData/SavedScores.txt");
+        BinaryWriter bw = new BinaryWriter(fs);
+        bw.Write(manager.score);
+        bw.Write(manager.InitialScoreA);
+        bw.Write(manager.InitialScoreB);
+        bw.Write(manager.InitialScoreC);
+        bw.Write(manager.InitialScoreD);
+        bw.Write(manager.addedValue);
+        bw.Write(AutoClick.minusTimer);
+        bw.Write(manager.AutomaticAddedValue);
+        fs.Close();
+        bw.Close();
+    }
     
     public void ClickToCredits()
     {
