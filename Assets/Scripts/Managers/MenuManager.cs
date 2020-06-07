@@ -30,7 +30,7 @@ public class MenuManager : MonoBehaviour
     }
     public void ClickToLoad()
     {
-        FileStream fs = File.OpenRead("Assets/SavedData/SavedScores.txt");
+        FileStream fs = File.OpenRead(manager.dataPath + "/SavedData/SavedScores.txt");
         BinaryReader br = new BinaryReader(fs);
         manager.score = br.ReadInt32();
         manager.InitialScoreA = br.ReadInt32();
@@ -52,7 +52,7 @@ public class MenuManager : MonoBehaviour
     public void ClickToDeleteSaves()
     {
         manager.ResetValues();
-        FileStream fs = File.OpenWrite("Assets/SavedData/SavedScores.txt");
+        FileStream fs = File.OpenWrite(manager.dataPath + "/SavedData/SavedScores.txt");
         BinaryWriter bw = new BinaryWriter(fs);
         bw.Write(manager.score);
         bw.Write(manager.InitialScoreA);

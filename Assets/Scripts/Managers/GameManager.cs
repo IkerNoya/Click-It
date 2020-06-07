@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Mkey;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,7 +16,7 @@ public class GameManager : MonoBehaviour
     public int percentageAutoClicks = 75;
     public int InitialScoreC = 2000;
     public int InitialScoreD = 2000;
-
+    public string dataPath;
 
     public static GameManager Get()
     {
@@ -35,6 +36,8 @@ public class GameManager : MonoBehaviour
     {
         UIGame.addScore += Score;
         AutoClick.addScore += AutomaticScore;
+        dataPath = Application.dataPath;
+        Debug.Log(dataPath);
     }
     void Score()
     {
