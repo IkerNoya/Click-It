@@ -8,6 +8,7 @@ public class UIGame : MonoBehaviour
     public Text ScoreText;
     public Text UpgradeAPrice;
     public Text UpgradeBPrice;
+    public Text MoneyPerClicks;
     GameManager manager;
     public static bool inGame = true;
     public delegate void AddScore();
@@ -21,6 +22,7 @@ public class UIGame : MonoBehaviour
     {
         ScoreText.text = manager.score.ToString();
         UpgradeAPrice.text = "Price " + manager.InitialScoreA;
+        MoneyPerClicks.text = manager.addedValue.ToString();
         if(AutoClick.minusTimer<0.5f)
             UpgradeBPrice.text = "Price " + manager.InitialScoreB;
         else if(AutoClick.minusTimer >= 0.5f)
@@ -34,7 +36,7 @@ public class UIGame : MonoBehaviour
     {
         return ((value * percentage) / 100);
     }
-    public void OnClickUpgradeA()
+    public void OnClickMoreClikcs()
     {
         if (inGame)
         {
@@ -47,7 +49,7 @@ public class UIGame : MonoBehaviour
             }
         }
     }
-    public void OnClickUpgradeB()
+    public void OnClickAutomaticClicks()
     {
         if (inGame)
         {
