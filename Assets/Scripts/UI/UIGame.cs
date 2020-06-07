@@ -16,7 +16,7 @@ public class UIGame : MonoBehaviour
     public int InitialScoreC = 2000;
     public int InitialScoreD = 2000;
 
-    public static bool inGame = false;
+    public static bool inGame = true;
     public delegate void AddScore();
     public static event AddScore addScore;
 
@@ -28,9 +28,9 @@ public class UIGame : MonoBehaviour
     {
         ScoreText.text = "Score: " + manager.score;
         UpgradeAPrice.text = "Price " + InitialScoreA;
-        if(Upgrades.minusTimer<0.5f)
+        if(AutoClick.minusTimer<0.5f)
             UpgradeBPrice.text = "Price " + InitialScoreB;
-        else if(Upgrades.minusTimer >= 0.5f)
+        else if(AutoClick.minusTimer >= 0.5f)
             UpgradeBPrice.text = " Maxed";
     }
     public void OnClickObjective()
@@ -58,11 +58,11 @@ public class UIGame : MonoBehaviour
     {
         if (inGame)
         {
-            if (manager.score >= InitialScoreB && Upgrades.minusTimer < 0.5f)
+            if (manager.score >= InitialScoreB && AutoClick.minusTimer < 0.5f)
             {
-                Upgrades.ClickNow = true;
-                Upgrades.minusTimer += 0.1f;                    // Para testear, modificar mas adelante para evitar el sobreuso de static
-                Upgrades.timerLimit -= Upgrades.minusTimer;
+                AutoClick.ClickNow = true;
+                AutoClick.minusTimer += 0.1f;                    // Para testear, modificar mas adelante para evitar el sobreuso de static
+                AutoClick.timerLimit -= AutoClick.minusTimer;
                 manager.score -= InitialScoreB;
                 manager.AutomaticAddedValue += manager.initialValue;
                 InitialScoreB += Percentage(InitialScoreB, percentageB);

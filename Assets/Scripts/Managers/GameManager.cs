@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         UIGame.addScore += Score;
-        Upgrades.addScore += AutomaticScore;
+        AutoClick.addScore += AutomaticScore;
     }
     void Score()
     {
@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
     private void OnDisable()
     {
         UIGame.addScore -= Score;
-        Upgrades.addScore -= AutomaticScore;
+        AutoClick.addScore -= AutomaticScore;
 
     }
 }

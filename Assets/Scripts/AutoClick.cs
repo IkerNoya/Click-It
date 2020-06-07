@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Upgrades : MonoBehaviour
+public class AutoClick : MonoBehaviour
 {
     float timer = 0;
     public static float timerLimit = 1.7f;
@@ -13,7 +13,6 @@ public class Upgrades : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("Minus Timer " + minusTimer);
         if (!ClickNow)
             return;
         timer += Time.deltaTime;
