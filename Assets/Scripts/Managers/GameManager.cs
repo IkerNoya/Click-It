@@ -50,4 +50,15 @@ public class GameManager : MonoBehaviour
         AutoClick.addScore -= AutomaticScore;
 
     }
+    public void ResetValues()
+    {
+        score = 0;
+        InitialScoreA = 2000;
+        InitialScoreB = 4000;
+        InitialScoreC = 2000;
+        InitialScoreD = 2000;
+        addedValue = 50;
+        AutoClick.minusTimer = 0;
+        AutomaticAddedValue = 50;
+    }
 }

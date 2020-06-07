@@ -61,6 +61,7 @@ public class UIGame : MonoBehaviour
                 manager.score -= manager.InitialScoreB;
                 manager.AutomaticAddedValue += manager.initialValue;
                 manager.InitialScoreB += Percentage(manager.InitialScoreB, manager.percentageAutoClicks);
+
             }
         }
     }
