@@ -9,6 +9,13 @@ public class GameManager : MonoBehaviour
     public int initialValue = 50;
     public int addedValue = 50;
     public int AutomaticAddedValue = 50;
+    public int InitialScoreA = 2000;
+    public int percentageMoreClicks = 20;
+    public int InitialScoreB = 4000;
+    public int percentageAutoClicks = 75;
+    public int InitialScoreC = 2000;
+    public int InitialScoreD = 2000;
+
 
     public static GameManager Get()
     {

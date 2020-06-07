@@ -9,13 +9,6 @@ public class UIGame : MonoBehaviour
     public Text UpgradeAPrice;
     public Text UpgradeBPrice;
     GameManager manager;
-    public int InitialScoreA = 2000;
-    int percentageA = 20;
-    public int InitialScoreB = 4000;
-    int percentageB = 75;
-    public int InitialScoreC = 2000;
-    public int InitialScoreD = 2000;
-
     public static bool inGame = true;
     public delegate void AddScore();
     public static event AddScore addScore;
@@ -27,9 +20,9 @@ public class UIGame : MonoBehaviour
     private void Update()
     {
         ScoreText.text = "Score: " + manager.score;
-        UpgradeAPrice.text = "Price " + InitialScoreA;
+        UpgradeAPrice.text = "Price " + manager.InitialScoreA;
         if(AutoClick.minusTimer<0.5f)
-            UpgradeBPrice.text = "Price " + InitialScoreB;
+            UpgradeBPrice.text = "Price " + manager.InitialScoreB;
         else if(AutoClick.minusTimer >= 0.5f)
             UpgradeBPrice.text = " Maxed";
     }
@@ -45,12 +38,12 @@ public class UIGame : MonoBehaviour
     {
         if (inGame)
         {
-            if (manager.score >= InitialScoreA)
+            if (manager.score >= manager.InitialScoreA)
             {
-                manager.score -= InitialScoreA;
+                manager.score -= manager.InitialScoreA;
                 manager.addedValue += manager.initialValue;
-                InitialScoreA += Percentage(InitialScoreA, percentageA);
-                percentageA += 5;
+                manager.InitialScoreA += Percentage(manager.InitialScoreA, manager.percentageMoreClicks);
+                manager.percentageMoreClicks += 5;
             }
         }
     }
@@ -58,14 +51,14 @@ public class UIGame : MonoBehaviour
     {
         if (inGame)
         {
-            if (manager.score >= InitialScoreB && AutoClick.minusTimer < 0.5f)
+            if (manager.score >= manager.InitialScoreB && AutoClick.minusTimer < 0.5f)
             {
                 AutoClick.ClickNow = true;
                 AutoClick.minusTimer += 0.1f;                    // Para testear, modificar mas adelante para evitar el sobreuso de static
                 AutoClick.timerLimit -= AutoClick.minusTimer;
-                manager.score -= InitialScoreB;
+                manager.score -= manager.InitialScoreB;
                 manager.AutomaticAddedValue += manager.initialValue;
-                InitialScoreB += Percentage(InitialScoreB, percentageB);
+                manager.InitialScoreB += Percentage(manager.InitialScoreB, manager.percentageAutoClicks);
             }
         }
     }

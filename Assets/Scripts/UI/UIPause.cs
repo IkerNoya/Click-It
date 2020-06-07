@@ -20,8 +20,8 @@ public class UIPause : MonoBehaviour
     }
     public void OnClickMenu()
     {
-        SceneManager.LoadScene("Menu");
         SceneManager.UnloadSceneAsync("Pause");
+        SceneManager.LoadScene("Menu");
     }
     public void OnClickQuit()
     {
