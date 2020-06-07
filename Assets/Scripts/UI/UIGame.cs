@@ -19,7 +19,7 @@ public class UIGame : MonoBehaviour
     }
     private void Update()
     {
-        ScoreText.text = "Score: " + manager.score;
+        ScoreText.text = manager.score.ToString();
         UpgradeAPrice.text = "Price " + manager.InitialScoreA;
         if(AutoClick.minusTimer<0.5f)
             UpgradeBPrice.text = "Price " + manager.InitialScoreB;
