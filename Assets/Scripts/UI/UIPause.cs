@@ -21,7 +21,8 @@ public class UIPause : MonoBehaviour
     }
     public void OnClickSave()
     {
-        FileStream fs = File.OpenWrite(manager.dataPath + "/SavedData/SavedScores.txt");
+        string fileName = "SavedScores.txt";
+        FileStream fs = File.OpenWrite(manager.dataPath + "/" + fileName);
         BinaryWriter bw = new BinaryWriter(fs);
         bw.Write(manager.score);
         bw.Write(manager.InitialScoreA);

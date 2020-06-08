@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
     {
         UIGame.addScore += Score;
         AutoClick.addScore += AutomaticScore;
-        dataPath = Application.dataPath;
+        dataPath = Application.persistentDataPath;
         Debug.Log(dataPath);
     }
     void Score()
